@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolios — Portfolio Ideas</title>
+  <meta name="description" content="Browse portfolio website live examples with their tech stacks. Discover tools and technologies used by developers and designers worldwide." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ──────────────────────────────────────── -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo" id="nav-home-logo-portfolios">
+      <span class="nav-logo-icon">PI</span>
+      Portfolio Ideas
+    </a>
+    <div class="nav-right">
+      <a href="portfolios.html" class="nav-link active" id="nav-portfolios-active-link">Portfolios</a>
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark/light mode" title="Toggle theme">
+        🌙
+      </button>
+      <button class="nav-avatar" id="nav-avatar-btn-portfolios" aria-label="User menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN CONTENT ────────────────────────────────── -->
+  <main class="portfolios-main" id="portfolios-main">
+
+    <div class="portfolios-header">
+      <h1 id="portfolios-title">
+        Portfolio Examples
+        <span class="count-badge" id="portfolio-count">0</span>
+      </h1>
+      <p>Click any link to open the portfolio in a new tab.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="portfolio-table" id="portfolio-table" aria-label="Portfolio website examples">
+        <thead>
+          <tr>
+            <th scope="col" id="col-live-url">Live URL</th>
+            <th scope="col" id="col-tech-stack">Tech Stack</th>
+          </tr>
+        </thead>
+        <tbody id="portfolio-tbody">
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ─── FOOTER ──────────────────────────────────────── -->
+  <footer id="site-footer-portfolios">
+    <p>Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.</p>
+    <p>Copyright © 2022-present Victor Eke | <a href="index.html">Portfolio Ideas</a></p>
+  </footer>
+
+  <!-- ─── DATA + RENDER SCRIPT ─────────────────────────── -->
+  <script>
+    // ── Portfolio Data ──────────────────────────────────
+    // Add your portfolio entries here as { url, techs[] }
+    const portfolios = [
+      { url: "https://victoreke.com", techs: ["Nextjs", "Sanity", "Tailwind CSS", "TypeScript", "Umami", "Vercel"] },
+      { url: "https://kentcdodds.com", techs: ["React", "TypeScript", "Remix", "Prisma", "Redis", "Postgres", "CSS"] },
+      { url: "https://v4.brittanychiang.com/", techs: ["React", "Gatsby", "Styled-components"] },
+      { url: "https://braydoncoyer.dev/", techs: ["React", "TypeScript", "NextJS", "Tailwindcss", "Notion API", "Supabase"] },
+      { url: "https://taniarascia.com", techs: ["React", "Gatsby", "CSS", "Netlify", "NodeJS"] },
+      { url: "https://jemimaabu.com", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://rekhchandsahu.com", techs: ["React", "Gatsby", "Preact", "GSAP"] },
+      { url: "https://olaolu.dev", techs: ["VueJS", "JavaScript", "HTML", "styled-components", "Sass"] },
+      { url: "https://www.thvu.dev/", techs: ["React", "NextJS", "NodeJS", "TypeScript", "GraphQL", "Tailwindcss"] },
+      { url: "https://georgefrancis.dev", techs: ["GSAP", "Netlify", "HTML", "CSS", "JavaScript"] },
+      { url: "https://people.umass.edu/avsingh", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://www.adeolaadeoti.site", techs: ["TypeScript", "GSAP", "NodeJS", "NextJS", "SCSS"] },
+      { url: "https://www.dejan.works", techs: ["HTML", "CSS", "JavaScript", "jQuery"] },
+      { url: "https://mxb.dev", techs: ["Eleventy", "SCSS", "Nunjucks"] },
+      { url: "https://darn.es", techs: ["Netlify", "Jekyll"] },
+      { url: "https://iamschulz.com", techs: ["Hugo", "Shell", "JavaScript"] },
+      { url: "https://rafa.design", techs: ["Nunjucks", "JavaScript", "CSS"] },
+      { url: "https://bruno-simon.com", techs: ["GSAP", "ThreeJS", "JavaScript"] },
+      { url: "https://www.seyi.dev", techs: ["HTML", "SCSS", "JavaScript", "GSAP"] },
+      { url: "https://www.jason.energy", techs: ["JavaScript", "TypeScript", "Nunjucks", "CSS"] },
+      { url: "https://deidredriscoll.com", techs: ["HTML", "JavaScript", "CSS", "GSAP"] },
+      { url: "https://madebyporter.com", techs: ["HTML", "Slim", "Ruby", "SCSS", "JavaScript", "CSS"] },
+      { url: "https://www.mamboleoo.be", techs: ["PHP", "Parcel"] },
+      { url: "https://adriengervaix.com", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://www.aaron.mn", techs: ["React", "Gatsby", "Styled Components", "Netlify"] },
+      { url: "https://petertait.com", techs: ["React", "Webpack", "Radium", "Netlify"] },
+      { url: "https://www.rickwaalders.com", techs: ["NextJS", "React", "NodeJS", "GSAP", "Webpack"] },
+      { url: "https://cpro-portfolio-html.netlify.app", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://ahmedzougari.com", techs: ["HTML", "SASS", "Bootstrap", "JavaScript", "Vite"] },
+      { url: "https://www.rajsavaliya.com/", techs: ["NextJS", "React", "TypeScript", "Tailwind CSS"] },
+      { url: "https://mitolu.dev", techs: ["HTML", "SASS", "Javascript", "GSAP"] },
+      { url: "https://saikatroy.netlify.app/", techs: ["HTML", "CSS", "Bootstrap", "JavaScript", "jQuery"] },
+      { url: "https://anandbaraik.github.io", techs: ["HTML", "CSS", "React.js"] },
+      { url: "https://nirban-chakraborty.netlify.app/", techs: ["ReactJs", "JavaScript", "SASS", "HTML"] },
+      { url: "https://benrobo.vercel.app", techs: ["Reactjs", "TailwindCss", "Next.js", "Emailjs"] },
+      { url: "https://nayeemdev.github.io/", techs: ["HTML", "CSS", "Bootstrap", "Javascript", "jQuery"] },
+      { url: "https://sachinchaurasiya.dev", techs: ["HTML", "CSS", "JavaScript", "ReactJs", "Material UI"] },
+      { url: "https://anishde.dev", techs: ["Next.js", "TypeScript", "Tailwind CSS", "Content Layer"] },
+      { url: "https://shourya.vercel.app", techs: ["Flutter"] },
+      { url: "https://osa-portfolio.vercel.app/", techs: ["ReactJs", "JavaScript", "CSS", "HTML"] },
+      { url: "http://www.rleonardi.com", techs: ["NextJS", "React", "NodeJS", "GSAP", "Webpack"] },
+      { url: "https://serdargokhan.dev", techs: ["NextJS", "TypeScript", "TailwindCSS"] },
+      { url: "https://www.jefersonsilva.me/", techs: ["Vue 3.0", "Vite"] },
+      { url: "https://trinhminhnhat.com", techs: ["React", "Tailwindcss"] },
+      { url: "https://yunuserturk.com", techs: ["HTML", "CSS", "React", "NextJS"] },
+      { url: "https://napthedev.com", techs: ["Nextjs", "Tailwind", "Framer-motion", "Locomotive-scroll"] },
+      { url: "https://ismaellopez.dev", techs: ["Svelte", "JavaScript", "CSS", "HTML", "Netlify CMS"] },
+      { url: "https://micahlindley.com", techs: ["Vue 3", "Vite"] },
+      { url: "https://tri-dang.github.io/about", techs: ["Ruby", "Jekyll", "Markdown"] },
+      { url: "https://rezaghz.com", techs: ["HTML", "CSS", "Bootstrap", "Javascript", "Blade"] },
+      { url: "https://arifszn.github.io/gitprofile", techs: ["React", "Vite", "Tailwind CSS"] },
+      { url: "https://dalelarroder.com", techs: ["NextJS", "Preact", "TypeScript", "Tailwind", "MDX"] },
+      { url: "https://williamssam.netlify.app/", techs: ["HTML", "CSS", "Javascript"] },
+      { url: "https://guillaumegouessan.com/", techs: ["GSAP", "ThreeJS", "JavaScript"] },
+      { url: "https://patrickheng.com/", techs: ["Nuxt.js", "GSAP", "ThreeJS"] },
+      { url: "https://andrewbaisden.com", techs: ["HTML", "CSS", "TypeScript", "ReactJS"] },
+      { url: "https://azizstark.com", techs: ["React", "Gatsby", "Styled-Components", "SCSS", "AnimeJS"] },
+      { url: "https://lndev.me", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://www.cozy-codeur.fr", techs: ["React", "Gatsby", "Chakra UI", "Framer Motion"] },
+      { url: "https://www.segunajibola.com", techs: ["HTML", "CSS", "TailwindCSS", "React", "SwiperJS"] },
+      { url: "https://hsmkrt1996.com/", techs: ["Vue.js", "Nuxt.js", "SCSS", "ThreeJS", "GSAP"] },
+      { url: "https://dennissnellenberg.com/", techs: ["GSAP", "jQuery", "PHP", "VueJS"] },
+      { url: "https://www.fayemi.design/", techs: ["Vanilla JS", "Pug", "Prismic CMS", "SCSS", "ThreeJS", "GSAP"] },
+      { url: "https://bhavinn.xyz", techs: ["HTML", "CSS", "JS", "React.js", "Github API"] },
+      { url: "https://pscott.io", techs: ["React.js", "Heroku", "Github Pages"] },
+      { url: "https://nikolovlazar.com", techs: ["Next.js", "Chakra UI", "MDX", "Prisma", "PlanetScale"] },
+      { url: "https://reubence.com", techs: ["HTML", "TailwindCSS", "React", "Javascript", "Next.JS", "MDX"] },
+      { url: "https://mshahanwaz.me", techs: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Nodemailer"] },
+      { url: "https://leerob.io/", techs: ["Next.js", "PlanetScale", "Prisma", "Vercel", "Sanity", "Tailwind CSS"] },
+      { url: "https://musing.vercel.app/", techs: ["TailwindCSS", "React", "Javascript", "Next.JS", "MDX"] },
+      { url: "https://iamvictor.tech", techs: ["Next.js", "Tailwind CSS", "React Rough Notation", "Netlify"] },
+      { url: "https://www.usman-s.me", techs: ["NextJS", "Chakra UI", "Framer Motion"] },
+      { url: "https://lookupzach.netlify.app", techs: ["ReactJS", "Material UI", "SCSS", "Styled Components"] },
+      { url: "https://paytonpierce.dev", techs: ["ReactJS", "Material UI"] },
+      { url: "https://jacobfv.github.io", techs: ["HTML", "Jekyll"] },
+      { url: "https://walterteng.com/", techs: ["React", "Typescript", "Gatsby", "Netlify"] },
+      { url: "https://xahidex.com/", techs: ["Typescript", "NextJs", "TailwindCSS", "Prisma", "Contentlayer", "React"] },
+      { url: "https://gregsithole.com", techs: ["HTML", "CSS", "React.js"] },
+      { url: "https://portfolio-45b9b.web.app/", techs: ["ReactJs", "CSS", "GSAP", "Framer Motion"] },
+      { url: "https://gndx.io", techs: ["HTML", "TailwindCSS"] },
+      { url: "https://pcabreram-portfolio.netlify.app/", techs: ["HTML", "CSS", "JavaScript", "Webpack", "ReactJs"] },
+      { url: "https://nahuel61920.github.io/portafolio-Nahuel/", techs: ["HTML", "CSS", "JavaScript", "React", "Webpack", "Github Pages"] },
+      { url: "https://alfaizkhan.github.io", techs: ["Flutter", "Dart", "Github Pages"] },
+      { url: "https://jatinkamboj.me/", techs: ["HTML", "CSS", "JavaScript", "GreenSock"] },
+      { url: "https://leon0399.ru/", techs: ["ReactJS", "Tailwind", "CSS", "Vercel"] },
+      { url: "https://braydentw.io/", techs: ["React", "NextJS", "TailwindCSS"] },
+      { url: "https://nuro.dev/", techs: ["React", "NextJS", "TailwindCSS"] },
+      { url: "https://matthiaskretschmann.com/", techs: ["React", "Gatsby"] },
+      { url: "https://hamishw.com/", techs: ["React", "ThreeJS", "NextJS"] },
+      { url: "https://turali.js.org/", techs: ["React", "TypeScript"] },
+      { url: "https://pyaesonepsn.github.io/portfolio-project/", techs: ["HTML", "CSS", "JavaScript"] },
+      { url: "https://efrencodes.com", techs: ["NextJS", "TypeScript", "TailwindCSS"] },
+      { url: "https://portfolio2.eliaz-lr.dev/", techs: ["Vue 3", "Vite", "TailwindCSS"] },
+      { url: "https://hicaku.com", techs: ["Vue 3", "Pinia", "TypeScript"] },
+      { url: "https://araoladipo.tech/", techs: ["HTML", "CSS", "Javascript", "Vue.js", "Spline3D"] },
+      { url: "https://antfu.me/", techs: ["VueJS", "Markdown", "TypeScript", "CSS", "HTML"] },
+      { url: "https://timlrx.com", techs: ["NextJS", "MDX", "TailwindCSS", "JavaScript", "SASS"] },
+    ];
+
+    // ── Render Table ────────────────────────────────────
+    const tbody = document.getElementById('portfolio-tbody');
+    const countBadge = document.getElementById('portfolio-count');
+
+    function renderTable() {
+      countBadge.textContent = portfolios.length;
+
+      if (portfolios.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="2">
+              <div class="empty-state" id="empty-state-msg">
+                <div class="empty-icon">🚀</div>
+                <p>Portfolio links coming soon — check back shortly!</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = portfolios.map((item, index) => {
+        const hostname = (() => {
+          try { return new URL(item.url).hostname.replace(/^www\./, ''); }
+          catch { return item.url; }
+        })();
+
+        const tags = item.techs.map(t =>
+          `<span class="tech-tag">${escapeHtml(t)}</span>`
+        ).join('');
+
+        return `
+          <tr id="portfolio-row-${index + 1}">
+            <td>
+              <a class="live-link"
+                 href="${escapeHtml(item.url)}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 id="portfolio-link-${index + 1}"
+                 aria-label="Visit ${escapeHtml(hostname)} (opens in new tab)">
+                ${escapeHtml(hostname)}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </td>
+            <td>
+              <div class="tech-tags">${tags}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    renderTable();
+
+    // ── Theme Toggle ─────────────────────────────────────
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('pi-theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      toggleBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('pi-theme', next);
+    });
+  </script>
+
+</body>
+</html>
