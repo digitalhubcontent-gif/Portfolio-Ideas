@@ -60,9 +60,18 @@
 
   <!-- ─── FOOTER ──────────────────────────────────────── -->
   <footer id="site-footer-portfolios">
-    <p>Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.</p>
-    <p>Copyright © 2022-present Victor Eke | <a href="index.html">Portfolio Ideas</a></p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Protocol Zero</span>
+        <span class="footer-dot"></span>
+        <span class="footer-tagline">Curating the world's finest portfolio inspiration</span>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">© <span id="footer-year-p"></span> <strong>Protocol Zero</strong>. Crafted with precision.</p>
+    </div>
   </footer>
+  <script>document.getElementById('footer-year-p').textContent = new Date().getFullYear();</script>
+
 
   <!-- ─── DATA + RENDER SCRIPT ─────────────────────────── -->
   <script>

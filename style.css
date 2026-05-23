@@ -327,23 +327,84 @@ body {
 footer {
   background: var(--footer-bg);
   border-top: 1px solid var(--bg-card-border);
-  text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-footer p {
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #8b5cf6, #c084fc, #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.footer-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.footer-tagline {
   font-size: 0.8rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  letter-spacing: 0.02em;
 }
 
-footer a {
-  color: var(--accent);
-  text-decoration: none;
+.footer-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.footer-copy strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  opacity: 0.9;
 }
 
 /* ─── PORTFOLIOS PAGE ────────────────────────────────── */
